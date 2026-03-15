@@ -38,74 +38,74 @@ export default function ContactSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="text-center mb-16"
+                    className="text-center mb-12 md:mb-16"
                 >
-                    <h2 className="text-4xl md:text-6xl font-bold mb-2 tracking-tighter text-glow">
+                    <h2 className="text-3xl md:text-6xl font-bold mb-2 tracking-tighter text-glow uppercase">
                         INITIATE CONNECTION
                     </h2>
-                    <p className="text-xl text-white/60 font-mono">
+                    <p className="text-lg md:text-xl text-white/60 font-mono">
                         Drop a direct message. Establish a link.
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 w-full">
+                <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 md:gap-12 w-full px-2 md:px-0">
                     {/* Contact Form */}
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="lg:col-span-3 glass-panel p-8 rounded-2xl border border-white/10 relative overflow-hidden"
+                        className="lg:col-span-3 glass-panel p-6 md:p-8 rounded-2xl border border-white/10 relative overflow-hidden"
                     >
                         {status === 'success' && (
-                            <div className="absolute inset-0 bg-[#050505]/95 z-20 flex flex-col items-center justify-center font-mono text-neon-cyan">
+                            <div className="absolute inset-0 bg-[#050505]/95 z-20 flex flex-col items-center justify-center font-mono text-neon-cyan p-6 text-center">
                                 <Terminal size={48} className="mb-4" />
-                                <p>TRANSMISSION SUCCESSFUL</p>
-                                <button onClick={() => setStatus('idle')} className="mt-6 px-6 py-2 border border-neon-cyan/50 hover:bg-neon-cyan/10 rounded">
+                                <p className="text-sm md:text-base">TRANSMISSION SUCCESSFUL</p>
+                                <button onClick={() => setStatus('idle')} className="mt-6 px-6 py-2 border border-neon-cyan/50 hover:bg-neon-cyan/10 rounded text-sm uppercase">
                                     SEND ANOTHER
                                 </button>
                             </div>
                         )}
 
-                        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+                        <form onSubmit={handleSubmit} className="flex flex-col gap-5 md:gap-6">
                             <div>
-                                <label className="block text-xs font-mono text-white/50 mb-2 uppercase">Your Designation [Name]</label>
+                                <label className="block text-[10px] md:text-xs font-mono text-white/50 mb-2 uppercase tracking-wider">Your Designation [Name]</label>
                                 <input
                                     type="text"
                                     required
                                     value={formData.name}
                                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                    className="w-full bg-[#0a0a0a] border border-white/10 rounded p-4 text-white focus:outline-none focus:border-neon-cyan transition-colors font-mono"
+                                    className="w-full bg-[#0a0a0a] border border-white/10 rounded p-3 md:p-4 text-white focus:outline-none focus:border-neon-cyan transition-colors font-mono text-sm"
                                     placeholder="John Doe"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-xs font-mono text-white/50 mb-2 uppercase">Return Address [Email]</label>
+                                <label className="block text-[10px] md:text-xs font-mono text-white/50 mb-2 uppercase tracking-wider">Return Address [Email]</label>
                                 <input
                                     type="email"
                                     required
                                     value={formData.email}
                                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                    className="w-full bg-[#0a0a0a] border border-white/10 rounded p-4 text-white focus:outline-none focus:border-neon-cyan transition-colors font-mono"
+                                    className="w-full bg-[#0a0a0a] border border-white/10 rounded p-3 md:p-4 text-white focus:outline-none focus:border-neon-cyan transition-colors font-mono text-sm"
                                     placeholder="john@example.com"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-xs font-mono text-white/50 mb-2 uppercase">Encrypted Payload [Message]</label>
+                                <label className="block text-[10px] md:text-xs font-mono text-white/50 mb-2 uppercase tracking-wider">Encrypted Payload [Message]</label>
                                 <textarea
                                     required
                                     rows={4}
                                     value={formData.message}
                                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                    className="w-full bg-[#0a0a0a] border border-white/10 rounded p-4 text-white focus:outline-none focus:border-neon-cyan transition-colors font-mono resize-none"
+                                    className="w-full bg-[#0a0a0a] border border-white/10 rounded p-3 md:p-4 text-white focus:outline-none focus:border-neon-cyan transition-colors font-mono resize-none text-sm"
                                     placeholder="Type your message here..."
                                 ></textarea>
                             </div>
 
                             <button
                                 disabled={status === 'loading'}
-                                className="w-full mt-2 bg-white/5 hover:bg-neon-cyan/20 border border-white/20 hover:border-neon-cyan flex items-center justify-center gap-2 p-4 rounded font-mono text-white uppercase tracking-widest transition-all group disabled:opacity-50"
+                                className="w-full mt-2 bg-white/5 hover:bg-neon-cyan/20 border border-white/20 hover:border-neon-cyan flex items-center justify-center gap-2 p-4 rounded font-mono text-white text-xs md:text-sm uppercase tracking-[0.2em] transition-all group disabled:opacity-50"
                             >
                                 {status === 'loading' ? 'Encrypting...' : 'Transmit Data'}
                                 <Send size={18} className="group-hover:text-neon-cyan group-hover:translate-x-1 transition-transform" />
@@ -121,60 +121,60 @@ export default function ContactSection() {
                         className="lg:col-span-2 flex flex-col gap-6"
                     >
                         {/* Direct Contact Info */}
-                        <div className="glass-panel p-8 rounded-2xl border border-white/10 flex flex-col gap-6 relative overflow-hidden">
-                            <h3 className="text-lg font-bold text-white font-mono mb-2">Direct Contact</h3>
+                        <div className="glass-panel p-6 md:p-8 rounded-2xl border border-white/10 flex flex-col gap-6 relative overflow-hidden">
+                            <h3 className="text-base md:text-lg font-bold text-white font-mono mb-2">Direct Contact</h3>
 
                             <a href="mailto:ashwanikumar6064@gmail.com" className="flex items-start gap-4 group">
-                                <div className="p-3 bg-white/5 rounded-full text-white/60 group-hover:text-neon-cyan group-hover:bg-neon-cyan/10 transition-colors">
-                                    <Mail size={20} />
+                                <div className="p-2.5 md:p-3 bg-white/5 rounded-full text-white/60 group-hover:text-neon-cyan group-hover:bg-neon-cyan/10 transition-colors">
+                                    <Mail size={18} />
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="text-xs font-mono text-white/40 uppercase">Email</span>
-                                    <span className="text-sm text-white/80 group-hover:text-neon-cyan transition-colors mt-1 hover:underline">ashwanikumar6064@gmail.com</span>
+                                    <span className="text-[10px] md:text-xs font-mono text-white/40 uppercase tracking-widest">Email</span>
+                                    <span className="text-[13px] md:text-sm text-white/80 group-hover:text-neon-cyan transition-colors mt-1 hover:underline break-all">ashwanikumar6064@gmail.com</span>
                                 </div>
                             </a>
 
                             <a href="tel:+916205106008" className="flex items-start gap-4 group">
-                                <div className="p-3 bg-white/5 rounded-full text-white/60 group-hover:text-neon-cyan group-hover:bg-neon-cyan/10 transition-colors">
-                                    <Phone size={20} />
+                                <div className="p-2.5 md:p-3 bg-white/5 rounded-full text-white/60 group-hover:text-neon-cyan group-hover:bg-neon-cyan/10 transition-colors">
+                                    <Phone size={18} />
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="text-xs font-mono text-white/40 uppercase">Phone</span>
-                                    <span className="text-sm text-white/80 group-hover:text-neon-cyan transition-colors mt-1 hover:underline">+91 6205106008</span>
+                                    <span className="text-[10px] md:text-xs font-mono text-white/40 uppercase tracking-widest">Phone</span>
+                                    <span className="text-[13px] md:text-sm text-white/80 group-hover:text-neon-cyan transition-colors mt-1 hover:underline">+91 6205106008</span>
                                 </div>
                             </a>
 
                             <div className="flex items-start gap-4 group cursor-default">
-                                <div className="p-3 bg-white/5 rounded-full text-white/60 group-hover:text-neon-cyan group-hover:bg-neon-cyan/10 transition-colors">
-                                    <MapPin size={20} />
+                                <div className="p-2.5 md:p-3 bg-white/5 rounded-full text-white/60 group-hover:text-neon-cyan group-hover:bg-neon-cyan/10 transition-colors">
+                                    <MapPin size={18} />
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="text-xs font-mono text-white/40 uppercase">Location</span>
-                                    <span className="text-sm text-white/80 mt-1 leading-relaxed">Saurabh Vihar, Badarpur<br />New Delhi - 110044</span>
+                                    <span className="text-[10px] md:text-xs font-mono text-white/40 uppercase tracking-widest">Location</span>
+                                    <span className="text-[13px] md:text-sm text-white/80 mt-1 leading-relaxed">Saurabh Vihar, Badarpur<br />New Delhi - 110044</span>
                                 </div>
                             </div>
                         </div>
 
                         {/* Social Links Row */}
-                        <div className="grid grid-cols-2 gap-6">
+                        <div className="grid grid-cols-2 gap-4 md:gap-6">
                             <a href="https://github.com/Ashwani-52" target="_blank" rel="noopener noreferrer"
-                                className="glass-panel group p-6 rounded-2xl border border-white/10 hover:border-neon-cyan transition-all flex flex-col items-center justify-center gap-3 relative overflow-hidden">
+                                className="glass-panel group p-5 md:p-6 rounded-2xl border border-white/10 hover:border-neon-cyan transition-all flex flex-col items-center justify-center gap-3 relative overflow-hidden text-center">
                                 <div className="absolute inset-0 bg-neon-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                <Github size={32} className="text-white/80 group-hover:text-neon-cyan transition-colors" />
+                                <Github size={24} className="md:size-32 text-white/80 group-hover:text-neon-cyan transition-colors" />
                                 <span className="text-sm font-bold text-white font-mono">GitHub</span>
                             </a>
 
                             <a href="https://www.linkedin.com/in/ashwani-kumar-a4710b297/" target="_blank" rel="noopener noreferrer"
-                                className="glass-panel group p-6 rounded-2xl border border-white/10 hover:border-neon-crimson transition-all flex flex-col items-center justify-center gap-3 relative overflow-hidden">
+                                className="glass-panel group p-5 md:p-6 rounded-2xl border border-white/10 hover:border-neon-crimson transition-all flex flex-col items-center justify-center gap-3 relative overflow-hidden text-center">
                                 <div className="absolute inset-0 bg-neon-crimson/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                <Linkedin size={32} className="text-white/80 group-hover:text-neon-crimson transition-colors" />
+                                <Linkedin size={24} className="md:size-32 text-white/80 group-hover:text-neon-crimson transition-colors" />
                                 <span className="text-sm font-bold text-white font-mono">LinkedIn</span>
                             </a>
                         </div>
                     </motion.div>
                 </div>
 
-                <footer className="w-full mt-32 pb-8 flex justify-between items-center text-xs font-mono text-white/30 border-t border-white/10 pt-8">
+                <footer className="w-full mt-24 md:mt-32 pb-8 flex flex-col md:flex-row gap-4 justify-between items-center text-[10px] md:text-xs font-mono text-white/30 border-t border-white/10 pt-8 text-center uppercase tracking-widest">
                     <p>© {new Date().getFullYear()} Ashwani Kumar. All rights reserved.</p>
                     <p className="text-white/20">Built with Next.js 14 + Framer Motion</p>
                 </footer>

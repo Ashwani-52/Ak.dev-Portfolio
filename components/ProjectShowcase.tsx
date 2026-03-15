@@ -184,17 +184,17 @@ export default function ProjectShowcase() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="mb-20 flex flex-col items-start"
+                    className="mb-16 md:mb-20 flex flex-col items-start"
                 >
-                    <span className="text-[11px] font-mono tracking-[0.3em] uppercase text-neon-cyan/60 mb-4">Selected Work</span>
-                    <h2 className="text-4xl md:text-6xl font-black tracking-tight text-glow" style={{ fontFamily: 'var(--font-syne), sans-serif' }}>
+                    <span className="text-[10px] md:text-[11px] font-mono tracking-[0.3em] uppercase text-neon-cyan/60 mb-4">Selected Work</span>
+                    <h2 className="text-3xl md:text-6xl font-black tracking-tight text-glow uppercase" style={{ fontFamily: 'var(--font-syne), sans-serif' }}>
                         INITIATIVE &<br className="hidden md:block" /> ARCHITECTURE
                     </h2>
-                    <div className="w-16 h-[2px] bg-gradient-to-r from-neon-cyan to-neon-crimson mt-6" />
+                    <div className="w-16 h-[2px] bg-gradient-to-r from-neon-cyan to-neon-crimson mt-4 md:mt-6" />
                 </motion.div>
 
                 {/* Project Cards */}
-                <div className="flex flex-col gap-32">
+                <div className="flex flex-col gap-24 md:gap-32">
                     {projectShowcaseData.map((project, idx) => (
                         <motion.div
                             key={project.id + project.title}
@@ -202,10 +202,10 @@ export default function ProjectShowcase() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: '-10%' }}
                             transition={{ duration: 0.7, delay: 0.1 }}
-                            className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${idx % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : ''}`}
+                            className={`grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12 items-center ${idx % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : ''}`}
                         >
                             {/* Left: Slideshow */}
-                            <div className="w-full aspect-video lg:aspect-auto lg:h-[420px]">
+                            <div className="w-full aspect-video lg:aspect-auto lg:h-[420px] min-h-[300px] md:min-h-[380px]">
                                 <ProjectSlideshow images={project.images} title={project.title} />
                             </div>
 

@@ -19,7 +19,7 @@ export default function AboutMe() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: '-10%' }}
                     transition={{ duration: 0.9, ease: 'easeOut' }}
-                    className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden"
+                    className="relative w-full aspect-[4/5] lg:aspect-[4/5] rounded-2xl overflow-hidden order-2 lg:order-1 h-[400px] lg:h-auto"
                     style={{
                         border: '1px solid rgba(0,240,255,0.12)',
                         boxShadow: '0 0 60px rgba(0,240,255,0.06), inset 0 0 40px rgba(0,0,0,0.4)',
@@ -90,23 +90,23 @@ export default function AboutMe() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: '-10%' }}
                     transition={{ duration: 0.9, ease: 'easeOut', delay: 0.1 }}
-                    className="flex flex-col justify-center"
+                    className="flex flex-col justify-center order-1 lg:order-2"
                 >
                     {/* Label */}
-                    <span className="text-[11px] font-mono tracking-[0.3em] uppercase text-neon-cyan/60 mb-4">
+                    <span className="text-[10px] md:text-[11px] font-mono tracking-[0.3em] uppercase text-neon-cyan/60 mb-4">
                         Who I Am
                     </span>
 
                     {/* Heading */}
                     <h2
-                        className="text-4xl md:text-5xl font-black tracking-tight text-white mb-8 leading-tight text-glow"
+                        className="text-3xl md:text-5xl font-black tracking-tight text-white mb-6 md:mb-8 leading-tight text-glow"
                         style={{ fontFamily: 'var(--font-syne), sans-serif' }}
                     >
                         About Me.
                     </h2>
 
                     {/* Bio paragraphs */}
-                    <div className="flex flex-col gap-5 text-white/60 text-[15px] leading-relaxed" style={{ fontFamily: 'var(--font-space-grotesk), sans-serif' }}>
+                    <div className="flex flex-col gap-4 md:gap-5 text-white/60 text-sm md:text-[15px] leading-relaxed" style={{ fontFamily: 'var(--font-space-grotesk), sans-serif' }}>
                         <p>
                             I am <span className="text-white/90 font-semibold">Ashwani Kumar</span>, a Full-Stack Web Developer specializing in the{' '}
                             <span className="text-[#00f0ff]/90">MERN stack</span> with a deep passion for crafting intuitive UI/UX experiences. Over the past 2+ years at Lovely Professional University, I have honed my skills by architecting and deploying custom websites for academic faculty and independent clients, successfully bridging the gap between aesthetic design and robust engineering.
@@ -117,7 +117,7 @@ export default function AboutMe() {
                     </div>
 
                     {/* Stat counters */}
-                    <div className="flex flex-wrap gap-10 mt-12 pt-10 border-t border-white/[0.08]">
+                    <div className="flex flex-wrap gap-8 md:gap-10 mt-10 md:mt-12 pt-10 border-t border-white/[0.08]">
                         {stats.map((stat, i) => (
                             <motion.div
                                 key={stat.label}
@@ -128,7 +128,7 @@ export default function AboutMe() {
                                 className="flex flex-col gap-1"
                             >
                                 <span
-                                    className="text-2xl font-black tracking-tight"
+                                    className="text-xl md:text-2xl font-black tracking-tight"
                                     style={{
                                         color: '#00f0ff',
                                         textShadow: '0 0 20px rgba(0,240,255,0.5)',
@@ -137,7 +137,7 @@ export default function AboutMe() {
                                 >
                                     {stat.value}
                                 </span>
-                                <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-white/35">
+                                <span className="text-[9px] md:text-[10px] font-mono tracking-[0.2em] uppercase text-white/35">
                                     {stat.label}
                                 </span>
                             </motion.div>

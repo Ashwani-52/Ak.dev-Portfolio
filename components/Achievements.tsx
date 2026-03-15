@@ -63,15 +63,15 @@ export default function Achievements() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="text-center mb-24 relative"
+                    className="text-center mb-16 md:mb-24 relative"
                 >
-                    <h2 className="text-white/90 text-5xl md:text-7xl font-extrabold tracking-tighter uppercase" style={{ fontFamily: 'var(--font-syne), sans-serif', filter: 'drop-shadow(0 0 20px rgba(0, 240, 255, 0.2))' }}>
+                    <h2 className="text-white/90 text-4xl md:text-7xl font-extrabold tracking-tighter uppercase" style={{ fontFamily: 'var(--font-syne), sans-serif', filter: 'drop-shadow(0 0 20px rgba(0, 240, 255, 0.2))' }}>
                         ACHIEVEMENTS
                     </h2>
-                    <div className="w-32 h-[2px] bg-gradient-to-r from-transparent via-white/40 to-transparent mx-auto mt-6" />
+                    <div className="w-24 md:w-32 h-[2px] bg-gradient-to-r from-transparent via-white/40 to-transparent mx-auto mt-4 md:mt-6" />
                 </motion.div>
 
-                <div className="w-full flex flex-col md:flex-row justify-between gap-16 md:gap-8">
+                <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 lg:gap-12 px-4 md:px-0">
                     {achievementsData.map((achievement, i) => (
                         <motion.div
                             key={achievement.platform}
@@ -79,7 +79,7 @@ export default function Achievements() {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: i * 0.15 }}
-                            className="relative flex-1 flex flex-col items-center group"
+                            className="relative flex flex-col items-center group"
                         >
                             {/* Central Hover Glow Aura - Softer */}
                             <div
@@ -98,26 +98,26 @@ export default function Achievements() {
                                     <img
                                         src={achievement.logo}
                                         alt={`${achievement.platform} logo`}
-                                        className="w-20 h-20 object-contain rounded-xl relative z-10"
+                                        className="w-16 h-16 md:w-20 md:h-20 object-contain rounded-xl relative z-10"
                                         style={{ filter: `drop-shadow(0 0 15px ${achievement.glowColor})` }}
                                     />
                                 </motion.div>
 
-                                <h3 className={`text-2xl font-bold tracking-widest uppercase mb-10 ${achievement.textColor} transition-colors duration-300`} style={{ fontFamily: 'var(--font-space-grotesk), sans-serif', textShadow: `0 0 10px ${achievement.glowColor}` }}>
+                                <h3 className={`text-xl md:text-2xl font-bold tracking-widest uppercase mb-8 md:mb-10 ${achievement.textColor} transition-colors duration-300`} style={{ fontFamily: 'var(--font-space-grotesk), sans-serif', textShadow: `0 0 10px ${achievement.glowColor}` }}>
                                     {achievement.platform}
                                 </h3>
 
                                 {/* Minimalist Stats Architecture */}
-                                <div className="flex flex-col w-full gap-8 border-l-2 border-white/5 pl-6 group-hover:border-white/20 transition-colors duration-500">
+                                <div className="flex flex-col w-full gap-6 md:gap-8 border-l-2 border-white/5 pl-6 group-hover:border-white/20 transition-colors duration-500">
                                     {achievement.stats.map((stat, index) => (
                                         <div key={index} className="flex flex-col origin-left transition-transform duration-300 group-hover:translate-x-2">
-                                            <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] text-white/40 mb-2 font-mono">
+                                            <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] text-white/40 mb-1.5 md:mb-2 font-mono">
                                                 {stat.label}
                                             </span>
                                             <div className="flex flex-col gap-2 mt-1">
                                                 <div className="flex items-center gap-3">
-                                                    <div className={`w-1 h-5 rounded-full bg-white/20 group-hover:bg-white transition-colors duration-500`} style={{ boxShadow: `0 0 10px ${achievement.glowColor}` }} />
-                                                    <span className="text-2xl md:text-3xl font-bold text-white/90 tracking-wider flex items-center gap-3" style={{ fontFamily: 'var(--font-jetbrains), monospace' }}>
+                                                    <div className={`w-1 h-4 md:h-5 rounded-full bg-white/20 group-hover:bg-white transition-colors duration-500`} style={{ boxShadow: `0 0 10px ${achievement.glowColor}` }} />
+                                                    <span className="text-xl md:text-3xl font-bold text-white/90 tracking-wider flex items-center gap-3" style={{ fontFamily: 'var(--font-jetbrains), monospace' }}>
                                                         {stat.value}
                                                         {stat.icon && <span style={{ filter: `drop-shadow(0 0 8px ${achievement.glowColor})` }}>{stat.icon}</span>}
                                                     </span>
@@ -125,11 +125,11 @@ export default function Achievements() {
 
                                                 {/* Golden Stars Rendering */}
                                                 {stat.stars && (
-                                                    <div className="flex gap-1.5 ml-4 mt-1">
+                                                    <div className="flex gap-1.5 ml-4">
                                                         {[...Array(stat.stars)].map((_, i) => (
                                                             <Star
                                                                 key={i}
-                                                                size={16}
+                                                                size={14}
                                                                 className="text-yellow-400 fill-yellow-400"
                                                                 style={{ filter: 'drop-shadow(0 0 8px rgba(250, 204, 21, 0.6))' }}
                                                             />
