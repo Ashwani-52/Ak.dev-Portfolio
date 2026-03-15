@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 5, 5, 5;
+  --background-end-rgb: 5, 5, 5;
+  --neon-cyan: #00f3ff;
+  --neon-crimson: #ff003c;
+}
+
+body {
+  color: theme('colors.foreground');
+  background: theme('colors.background');
+  font-family: var(--font-space-grotesk), sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  cursor: none;
+}
+
+/* Typography styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: theme('colors.primary.DEFAULT');
+  letter-spacing: -0.02em;
+}
+
+/* Hacker / Cyberpunk Text Shadow */
+.text-glow {
+  text-shadow: 2px 0 5px rgba(255, 0, 60, 0.5), -2px 0 5px rgba(0, 243, 255, 0.5);
+}
+
+.text-glow-hover:hover {
+  text-shadow: 4px 0 10px rgba(255, 0, 60, 0.8), -4px 0 10px rgba(0, 243, 255, 0.8);
+  transition: text-shadow 0.3s ease;
+}
+
+/* Custom Scrollbar - Cyberpunk Minimalist */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-cyan);
+  box-shadow: 0 0 10px var(--neon-cyan);
+}
+
+/* Glassmorphism */
+.glass-panel {
+  background: rgba(25, 25, 25, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
