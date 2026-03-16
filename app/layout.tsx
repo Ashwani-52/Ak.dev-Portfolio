@@ -3,6 +3,7 @@ import { Space_Grotesk, JetBrains_Mono, Orbitron, Syne } from "next/font/google"
 import "./globals.css";
 import CustomCursor from "@/components/CustomCursor";
 import Navbar from "@/components/Navbar";
+import { Analytics } from "@vercel/analytics/next";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -46,6 +47,7 @@ export default function RootLayout({
         <CustomCursor />
         <Navbar />
         {children}
+        <Analytics />
       </body>
     </html>
   );
