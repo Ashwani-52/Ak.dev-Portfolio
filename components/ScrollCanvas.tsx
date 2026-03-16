@@ -66,10 +66,13 @@ export default function ScrollCanvas({ scrollProgress }: ScrollCanvasProps) {
                 offsetX = (canvas.width - drawWidth) / 2;
             }
 
+            // Apply a slight horizontal offset for mobile to center the head better
+            const mobileOffset = typeof window !== 'undefined' && window.innerWidth < 768 ? canvas.width * 0.08 : 0;
+
             ctx.fillStyle = '#050505';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+            ctx.drawImage(img, offsetX + mobileOffset, offsetY, drawWidth, drawHeight);
 
             // Overlay to make white text pop
             ctx.fillStyle = 'rgba(5, 5, 5, 0.4)';

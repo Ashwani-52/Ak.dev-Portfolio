@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import dbConnect from '@/lib/mongodb';
+import Contact from '@/models/Contact';
 
 export async function POST(req: NextRequest) {
     try {
@@ -7,6 +9,16 @@ export async function POST(req: NextRequest) {
 
         if (!name || !email || !message) {
             return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+        }
+
+        // Connect to MongoDB and save message
+        try {
+            await dbConnect();
+            await Contact.create({ name, email, message });
+        } catch (dbError) {
+            console.error('Database connection or save error:', dbError);
+            // We continue with email even if DB fails, or we could fail here.
+            // Deciding to continue so the user still gets the email notification.
         }
 
         const transporter = nodemailer.createTransport({
