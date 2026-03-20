@@ -1,11 +1,12 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Star, TrendingUp, Activity } from 'lucide-react';
+import { Star, TrendingUp, Activity, Trophy, Medal, CheckCircle, School, Pencil, ChartColumnIncreasing } from 'lucide-react';
 
 type Stat = {
     label: string;
     value: string;
+    subValue?: string;
     icon?: React.ReactNode;
     stars?: number;
 };
@@ -36,8 +37,9 @@ const achievementsData: Achievement[] = [
         glowColor: "rgba(46,200,102,0.25)",
         textColor: "text-[#2EC866]",
         stats: [
-            { label: "Golden Badge", value: "Java", stars: 5 },
-            { label: "Golden Badge", value: "30 Days of Code" }
+            { label: "Golden Badge", value: "Java", stars: 5, icon: <Trophy size={22} className="text-[#2EC866]" /> },
+            { label: "Golden Badge", value: "30 Days of Code", icon: <Medal size={22} className="text-[#2EC866]" /> },
+            { label: "Project Euler+ (Contest)", value: "8/8 Solved perfectly", icon: <CheckCircle size={22} className="text-[#2EC866]" /> }
         ]
     },
     {
@@ -46,7 +48,9 @@ const achievementsData: Achievement[] = [
         glowColor: "rgba(47,141,70,0.25)",
         textColor: "text-[#2F8D46]",
         stats: [
-            { label: "University Rank", value: "959" }
+            { label: "University Rank", value: "959", icon: <School size={22} className="text-[#2F8D46]" /> },
+            { label: "Problems Solved", value: "87+", icon: <Pencil size={22} className="text-[#2F8D46]" /> },
+            { label: "Coding Score", value: "131", subValue: "(Top 15%* of ~6300 students)", icon: <ChartColumnIncreasing size={22} className="text-[#2F8D46]" /> }
         ]
     }
 ];
@@ -114,7 +118,7 @@ export default function Achievements() {
                                             <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] text-white/40 mb-1.5 md:mb-2 font-mono">
                                                 {stat.label}
                                             </span>
-                                            <div className="flex flex-col gap-2 mt-1">
+                                            <div className="flex flex-col gap-1 mt-1">
                                                 <div className="flex items-center gap-3">
                                                     <div className={`w-1 h-4 md:h-5 rounded-full bg-white/20 group-hover:bg-white transition-colors duration-500`} style={{ boxShadow: `0 0 10px ${achievement.glowColor}` }} />
                                                     <span className="text-xl md:text-3xl font-bold text-white/90 tracking-wider flex items-center gap-3" style={{ fontFamily: 'var(--font-jetbrains), monospace' }}>
@@ -122,6 +126,12 @@ export default function Achievements() {
                                                         {stat.icon && <span style={{ filter: `drop-shadow(0 0 8px ${achievement.glowColor})` }}>{stat.icon}</span>}
                                                     </span>
                                                 </div>
+
+                                                {stat.subValue && (
+                                                    <span className="text-[10px] font-medium text-white/40 ml-4 font-mono group-hover:text-white/60 transition-colors duration-300">
+                                                        {stat.subValue}
+                                                    </span>
+                                                )}
 
                                                 {/* Golden Stars Rendering */}
                                                 {stat.stars && (
